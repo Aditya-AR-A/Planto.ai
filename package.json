@@ -1,0 +1,114 @@
+{
+  "name": "planto-ai",
+  "displayName": "Planto.AI",
+  "description": "AI-powered code suggestions, inline completions, and error fixing for VS Code",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.92.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Machine Learning",
+    "Other"
+  ],
+  "activationEvents": [
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "sidebar",
+          "title": "Planto.AI",
+          "icon": "resources/icon_e.png"
+        }
+      ]
+    },
+    "views": {
+      "sidebar": [
+        {
+          "type": "webview",
+          "id": "sidebarView",
+          "name": "Planto.AI"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "planto-ai.focus",
+        "title": "Focus Planto.AI Sidebar"
+      },
+      {
+        "command": "planto-ai.toggleInlineSuggestions",
+        "title": "Toggle Inline Suggestions"
+      },
+      {
+        "command": "planto-ai.aiFixInChat",
+        "title": "AI Fix in Chat"
+      }
+    ],
+    "configuration": {
+      "title": "Planto.AI",
+      "properties": {
+        "planto-ai.defaultApi": {
+          "type": "number",
+          "default": 0,
+          "enum": [
+            0,
+            1,
+            2
+          ],
+          "enumDescriptions": [
+            "Groq",
+            "OpenAI",
+            "Gemini"
+          ],
+          "description": "Default AI model to use"
+        },
+        "planto-ai.inlineSuggestion": {
+          "type": "number",
+          "default": 0,
+          "enum": [
+            0,
+            1
+          ],
+          "enumDescriptions": [
+            "Disabled",
+            "Enabled"
+          ],
+          "description": "Enable or disable inline suggestions"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.7",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.92.0",
+    "@typescript-eslint/eslint-plugin": "^7.14.1",
+    "@typescript-eslint/parser": "^7.11.0",
+    "@vscode/test-cli": "^0.0.9",
+    "@vscode/test-electron": "^2.4.0",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.16.0",
+    "groq-sdk": "^0.5.0",
+    "json5": "^2.2.3",
+    "lodash": "^4.17.21",
+    "openai": "^4.55.5"
+  },
+  "repository": {
+    "type": "git",
+  "url": ""}
+}
